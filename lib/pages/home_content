@@ -1,0 +1,129 @@
+import 'package:flutter/material.dart';
+import 'package:workout_app/pages/workouts_page.dart';
+
+class HomeContent extends StatelessWidget {
+  const HomeContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // banner
+          Container(
+            height: 200,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image:  DecorationImage(
+                image: AssetImage("images/gym.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 20),
+
+          const Text(
+            "Welcome back 👋",
+            style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+          ),
+
+          const SizedBox(height: 6),
+
+          const Text(
+            "Track your workout and progress.",
+            style: TextStyle(fontSize: 16),
+          ),
+
+          const SizedBox(height: 24),
+
+          // ✅ start workout (تفاعلية)
+          InkWell(
+            borderRadius: BorderRadius.circular(12),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const WorkoutsPage(),
+                ),
+              );
+            },
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text(
+                      "Start workout",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Icon(Icons.play_arrow),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 24),
+
+          const Text(
+            "This Week",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+
+          const SizedBox(height: 12),
+
+          Row(
+            children: const [
+              _StatCard(value: "0", label: "Workouts"),
+              SizedBox(width: 12),
+              _StatCard(value: "0", label: "Exercises"),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _StatCard extends StatelessWidget {
+  final String value;
+  final String label;
+
+  const _StatCard({
+    required this.value,
+    required this.label,
+  });
+
+  @override
+  
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 24),
+          child: Column(
+            children: [
+              Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(label),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
