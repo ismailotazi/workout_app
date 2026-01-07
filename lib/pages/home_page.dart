@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: const Text("iron track")),
+      appBar: AppBar(centerTitle: true, title: const Text("Iron Track")),
 
       drawer: Drawer(
         child: ListView(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:workout_app/login_page.dart';
 import 'core/theme.dart';
-import 'pages/home_page.dart';
 
 void main() {
   runApp(const IronTrackApp());
@@ -17,7 +17,7 @@ class IronTrackApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: gender == "female" ? AppTheme.femaleTheme : AppTheme.maleTheme,
-      home: const HomePage(),
+      home: const LoginPage(),
     );
   }
 }
